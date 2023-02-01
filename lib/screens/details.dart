@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lipsum/lipsum.dart' as lipsum;
 
 import '../shared/heart.dart';
-import 'models/Trip.dart';
+import '../models/Trip.dart';
 
 class Details extends StatelessWidget {
 

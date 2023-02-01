@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutteranimation/shared/screenTitle.dart';
+
+import '../shared/screenTitle.dart';
 import '../shared/tripLast.dart';
 
 class Home extends StatefulWidget {
@@ -10,11 +11,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  get key => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/bg.png"),
@@ -25,13 +28,18 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: 30),
-                const SizedBox(
+                SizedBox(
                   height: 160,
-                  // child: ScreenTitle(text: 'Ninja Trips', key: null,),
+                  child: ScreenTitle(
+                    key: key,
+                    text: 'Freemo Trips',
+                  ),
                 ),
+
                 Flexible(
                   child: TripList(),
                 )
+
                 //Sandbox(),
               ],
             )));

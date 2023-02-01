@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../screens/details.dart';
-import '../screens/models/Trip.dart';
+import '../models/Trip.dart';
 
-class TripList extends StatefulWidget {
+class  TripList extends StatefulWidget {
   @override
   _TripListState createState() => _TripListState();
 }
 
 class _TripListState extends State<TripList> {
-  List<Widget> _tripTiles = [];
+  final List<Widget> _tripTiles = [];
   final GlobalKey _listKey = GlobalKey();
 
   @override
