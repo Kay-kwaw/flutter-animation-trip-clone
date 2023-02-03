@@ -11,7 +11,7 @@ class _HeartState extends State<Heart> {
     return IconButton(
       icon: const Icon(
         Icons.favorite,
-        color: Color.fromARGB(255, 162, 4, 4),
+        color: Color.fromARGB(255, 201, 27, 27),
         size: 30,
       ),
       onPressed: () {},
