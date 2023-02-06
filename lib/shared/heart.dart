@@ -6,6 +6,7 @@ class Heart extends StatefulWidget {
 }
 
 class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
+  bool isFav = false;
   late AnimationController _controller;
   late Animation _colorAnimation;
 
@@ -26,8 +27,25 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
     });
 
     _controller.addStatusListener((status) {
-      print(status);
+      if (status == AnimationStatus.completed) {
+        setState(() {
+          isFav = true;
+        });
+      }
+      if (status == AnimationStatus.dismissed) {
+        setState(() {
+          isFav = false;
+        });
+      }
     });
+  }
+
+  //to prevent the controller working onces we live this widget
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -42,7 +60,8 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
               size: 30,
             ),
             onPressed: () {
-              _controller.forward();
+              //Tenary operator
+              isFav ? _controller.forward() : _controller.reverse();
             },
           );
         });
