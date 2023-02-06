@@ -22,18 +22,27 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
         ColorTween(begin: Colors.grey, end: Colors.red).animate(_controller);
 
     _controller.addListener(() {
+      // //Tp retrigger tht Widget every time it loads
+      // setState(() {});
       print(_controller.value);
+      print(_colorAnimation.value);
     });
   }
 
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.favorite,
-        color: Colors.grey,
-        size: 30,
-      ),
-      onPressed: () {},
+    //Listens to changes in the animation controller
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (BuildContext context, Widget? child) { 
+      return IconButton(
+        icon: Icon(
+          Icons.favorite,
+          color: _colorAnimation.value,
+          size: 30,
+        ),
+        onPressed: () {},
+      );
+      }
     );
   }
 }
