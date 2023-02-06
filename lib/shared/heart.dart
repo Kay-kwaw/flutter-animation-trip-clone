@@ -16,33 +16,35 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
         duration: const Duration(milliseconds: 200),
         //Like a clock that ticks for animation
         vsync: this);
-    _controller.forward();
 
     _colorAnimation =
         ColorTween(begin: Colors.grey, end: Colors.red).animate(_controller);
 
     _controller.addListener(() {
-      // //Tp retrigger tht Widget every time it loads
-      // setState(() {});
       print(_controller.value);
       print(_colorAnimation.value);
+    });
+
+    _controller.addStatusListener((status) {
+      print(status);
     });
   }
 
   Widget build(BuildContext context) {
     //Listens to changes in the animation controller
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (BuildContext context, Widget? child) { 
-      return IconButton(
-        icon: Icon(
-          Icons.favorite,
-          color: _colorAnimation.value,
-          size: 30,
-        ),
-        onPressed: () {},
-      );
-      }
-    );
+        animation: _controller,
+        builder: (BuildContext context, Widget? child) {
+          return IconButton(
+            icon: Icon(
+              Icons.favorite,
+              color: _colorAnimation.value,
+              size: 30,
+            ),
+            onPressed: () {
+              _controller.forward();
+            },
+          );
+        });
   }
 }
